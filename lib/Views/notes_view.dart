@@ -10,11 +10,11 @@ class NotesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [CustomAppbar(), NotesListView()],
-        ),
-      ),
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: Column(children: [
+            CustomAppbar(title: "Notes", icon: Icons.search),
+            NotesListView()
+          ])),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.tealAccent,
         onPressed: () {
