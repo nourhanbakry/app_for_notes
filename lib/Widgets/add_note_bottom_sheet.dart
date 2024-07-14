@@ -10,21 +10,58 @@ class AddNoteBottomSheet extends StatelessWidget {
     return const Padding(
       padding: EdgeInsets.all(16),
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            CustomTextField(
-                hintText: "title",
-                contentPadding:
-                    EdgeInsets.symmetric(vertical: 20, horizontal: 10)),
-            SizedBox(height: 15),
-            CustomTextField(
-                hintText: "content",
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 10, vertical: 70)),
-            SizedBox(height: 60),
-            CustomButton(),
-          ],
-        ),
+        child: AddNoteForm(),
+      ),
+    );
+  }
+}
+
+class AddNoteForm extends StatefulWidget {
+  const AddNoteForm({super.key});
+
+  @override
+  State<AddNoteForm> createState() => _AddNoteFormState();
+}
+
+class _AddNoteFormState extends State<AddNoteForm> {
+  GlobalKey<FormState> globalKey = GlobalKey();
+
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  String? title, subTitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      autovalidateMode: autovalidateMode,
+      key: globalKey,
+      child: Column(
+        children: [
+          CustomTextField(
+              onSaved: (value) {
+                title = value;
+              },
+              hintText: "title",
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 20, horizontal: 10)),
+          const SizedBox(height: 15),
+          CustomTextField(
+              onSaved: (value) {
+                subTitle = value;
+              },
+              hintText: "content",
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: 10, vertical: 70)),
+          const SizedBox(height: 60),
+          CustomButton(
+            onTap: () {
+              if (globalKey.currentState!.validate()) {
+                globalKey.currentState!.save();
+              } else {
+                autovalidateMode = AutovalidateMode.always;
+              }
+            },
+          ),
+        ],
       ),
     );
   }
