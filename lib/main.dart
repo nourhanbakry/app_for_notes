@@ -7,9 +7,9 @@ import 'package:notes/constants.dart';
 import 'package:notes/models/note_model.dart';
 
 void main() async {
-  Hive.registerAdapter(NoteModelAdapter());
-  await Hive.initFlutter();
-  await Hive.openBox(kNotesBox);
+  Hive.registerAdapter(NoteModelAdapter()); // to read data
+  await Hive.initFlutter();  // to inialize hive
+  await Hive.openBox<NoteModel>(kNotesBox); // to open box for data
   Bloc.observer = SimpleBlocObserver();
   runApp(const NotesApp());
 }

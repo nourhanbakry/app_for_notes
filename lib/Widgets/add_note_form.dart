@@ -45,7 +45,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
               return CustomButton(
-                isLoading:  state is LoadingAddNoteState ? true : false,
+                isLoading:  state is LoadingAddNoteState ? true : false,    // to rebuild the button according to state
                 onTap: () {
                   if (globalKey.currentState!.validate()) {
                     globalKey.currentState!.save();

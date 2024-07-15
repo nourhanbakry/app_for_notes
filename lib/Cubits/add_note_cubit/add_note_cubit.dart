@@ -10,7 +10,7 @@ class AddNoteCubit extends Cubit<AddNoteState> {
   addNote({required NoteModel note}) async {
     emit(LoadingAddNoteState());
     try {
-      var notesBox = Hive.box(kNotesBox);   //Box<E> genertic accepts any type and deal with it
+      var notesBox = Hive.box<NoteModel>(kNotesBox);   //Box<E> genertic accepts any type and deal with it
       await notesBox.add(note); //add accepts dynamic
       emit(SuccessAddNoteState());
     } catch (e) {

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hintText;
-  final EdgeInsets contentPadding;
+  final EdgeInsets? contentPadding;
   void Function(String?)? onSaved;
 
   CustomTextField(
       {super.key,
       required this.hintText,
-      required this.contentPadding,
+       this.contentPadding,
       this.onSaved});
 
   @override
@@ -23,7 +23,6 @@ class CustomTextField extends StatelessWidget {
       },
       onSaved: onSaved,
       decoration: InputDecoration(
-      
         contentPadding: contentPadding,
         hintText: hintText,
         hintStyle: const TextStyle(color: Colors.tealAccent),
