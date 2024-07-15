@@ -23,6 +23,7 @@ class CustomTextField extends StatelessWidget {
       },
       onSaved: onSaved,
       decoration: InputDecoration(
+      
         contentPadding: contentPadding,
         hintText: hintText,
         hintStyle: const TextStyle(color: Colors.tealAccent),
