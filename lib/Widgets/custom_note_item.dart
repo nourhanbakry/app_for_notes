@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:notes/Views/edit_note_view.dart';
+import 'package:notes/models/note_model.dart';
 
 class CustomNoteItem extends StatelessWidget {
-  const CustomNoteItem({super.key});
+  const CustomNoteItem({super.key, required this.note});
+
+  final NoteModel note;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +19,7 @@ class CustomNoteItem extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 10),
         child: Container(
           decoration: BoxDecoration(
-              color: const Color(0xffFFCC80),
+              color: Color(note.color),
               borderRadius: BorderRadius.circular(10)),
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 20),
@@ -25,23 +28,22 @@ class CustomNoteItem extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 10),
                   child: ListTile(
-                      title: const Text("Flutter tips",
-                          style: TextStyle(color: Colors.black, fontSize: 32)),
-                      subtitle: const Text(
-                          "u can learn flutter with the best way",
+                      title: Text(note.title,
+                          style: const TextStyle(
+                              color: Colors.black, fontSize: 32)),
+                      subtitle: Text(note.subTitle,
                           style: TextStyle(
-                              color: Color.fromARGB(255, 126, 120, 120),
+                              color: Colors.black.withOpacity(.6), 
                               fontSize: 20)),
                       trailing: IconButton(
                           onPressed: () {},
                           icon: const Icon(Icons.delete, color: Colors.black))),
                 ),
                 const SizedBox(height: 20),
-                const Padding(
-                  padding: EdgeInsets.only(left: 230),
-                  child: Text("July 11 2024",
-                      style:
-                          TextStyle(color: Color.fromARGB(255, 126, 120, 120))),
+                Padding(
+                  padding: const EdgeInsets.only(left: 230),
+                  child: Text(note.date,
+                      style: TextStyle(color: Colors.black.withOpacity(.6))),
                 ),
               ],
             ),
