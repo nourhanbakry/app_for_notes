@@ -31,26 +31,27 @@ class _AddNoteFormState extends State<AddNoteForm> {
               onSaved: (value) {
                 title = value;
               },
-              hintText: "title",
-              contentPadding:
-                  const EdgeInsets.symmetric(vertical: 20, horizontal: 10)),
+              hintText: "title"),
           const SizedBox(height: 15),
           CustomTextField(
-              onSaved: (value) {
-                subTitle = value;
-              },
-              hintText: "content",
-              contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 70)),
+            onSaved: (value) {
+              subTitle = value;
+            },
+            hintText: "content",
+            maxLine: 5,
+          ),
           const SizedBox(height: 60),
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
               return CustomButton(
-                isLoading:  state is LoadingAddNoteState ? true : false,    // to rebuild the button according to state
+                isLoading: state is LoadingAddNoteState
+                    ? true
+                    : false, // to rebuild the button according to state
                 onTap: () {
                   if (globalKey.currentState!.validate()) {
                     globalKey.currentState!.save();
-                    final formattedDate = DateFormat('dd-MM-yyyy').format(DateTime.now());
+                    final formattedDate =
+                        DateFormat('dd-MM-yyyy').format(DateTime.now());
                     var note = NoteModel(
                         title: title!,
                         subTitle: subTitle!,

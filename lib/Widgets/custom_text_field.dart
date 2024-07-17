@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hintText;
-  final EdgeInsets? contentPadding;
+  final int maxLine;
+  final void Function(String)? onChanged;
+
   void Function(String?)? onSaved;
 
-  CustomTextField(
-      {super.key,
-      required this.hintText,
-       this.contentPadding,
-      this.onSaved});
+  CustomTextField({super.key, required this.hintText, this.onSaved,this.onChanged,this.maxLine = 1});
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +19,10 @@ class CustomTextField extends StatelessWidget {
           return null;
         }
       },
+      onChanged: onChanged,
       onSaved: onSaved,
+      maxLines: maxLine,
       decoration: InputDecoration(
-        contentPadding: contentPadding,
         hintText: hintText,
         hintStyle: const TextStyle(color: Colors.tealAccent),
         border: OutlineInputBorder(
