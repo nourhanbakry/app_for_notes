@@ -14,5 +14,9 @@ List<Color> kColorsPallet = const [
     Color.fromARGB(255, 98, 134, 125),
     Color.fromARGB(255, 8, 19, 17),
     Color.fromARGB(255, 30, 78, 66),
-    Color.fromARGB(255, 37, 91, 78)
+    Color.fromARGB(255, 37, 91, 78),
+    Color.fromARGB(255, 53, 53, 53),
+    Color.fromARGB(255, 30, 30, 30),
+    Color.fromARGB(255, 10, 10, 10),
+
   ]; //box name that I open it for hive to store data in it
